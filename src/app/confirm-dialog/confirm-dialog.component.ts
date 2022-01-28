@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-confirm-dialog',
@@ -6,10 +6,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./confirm-dialog.component.css']
 })
 export class ConfirmDialogComponent implements OnInit {
+  @Input() issueNo: number | null = null;
+  @Output() confirm = new EventEmitter<boolean>();
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
+  }
+
+  agree() {
+    this.confirm.emit(true);
+    this.issueNo = null;
+  }
+
+  disagree() {
+    this.confirm.emit(false);
+    this.issueNo = null;
   }
 
 }
