@@ -9,9 +9,9 @@ import { Issue } from '../interfaces/issue';
 })
 export class IssueListComponent implements OnInit {
   showReportIssue = false;
-  showEditIssue = false;
   issues: Issue[] = [];
   selectedIssue: Issue | null = null;
+  editIssue: Issue | null = null;
 
   constructor(private readonly issueService: IssuesService) {
   }
@@ -22,6 +22,12 @@ export class IssueListComponent implements OnInit {
 
   onCloseReport() {
     this.showReportIssue = false;
+    this.editIssue = null;
+    this.getIssues();
+  }
+
+  onCloseEdit() {
+    this.editIssue = null;
     this.getIssues();
   }
 

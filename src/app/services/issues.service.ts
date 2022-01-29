@@ -37,12 +37,13 @@ export class IssuesService {
     return [];
   }
 
-  updateIssue(issue: Issue) {
+  updateIssue(issueNo: number, issue: Issue) {
     const editIssue: Issue = {
-      ...issue
+      ...issue,
+      issueNo: issueNo
     };
 
-    const index = this.issues.findIndex(i => i === issue);
+    const index = this.issues.findIndex(i => i.issueNo === issueNo);
     this.issues[index] = editIssue;
   }
 }

@@ -28,14 +28,7 @@ export class IssueReportComponent implements OnInit {
       type: ['', Validators.required]
     });
 
-    if (this.issue) {
-      this.issueForm.setValue({
-        title: this.issue.title,
-        description: this.issue.description,
-        priority: this.issue.priority,
-        type: this.issue.type
-      });
-    }
+
 
     this.issueForm.controls['title'].valueChanges.subscribe((title: string) => {
       this.suggestions =
